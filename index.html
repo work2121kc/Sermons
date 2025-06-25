@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الخطب الدينية</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- إضافة مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>موقع الخطب الدينية</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="ابحث عن خطبة...">
+                <button onclick="searchSermons()">بحث</button>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="auth-link"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
+                <a href="add-sermon.html" id="add-sermon-link" class="auth-link hidden"><i class="fas fa-plus-circle"></i> إضافة خطبة</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content container">
+        <aside class="sidebar">
+            <h3>الأقسام</h3>
+            <ul class="categories">
+                <li><a href="#" data-category="all" class="active">جميع الخطب</a></li>
+                <li><a href="#" data-category="prayer">أهمية الصلاة</a></li>
+                <li><a href="#" data-category="fasting">الصيام</a></li>
+                <li><a href="#" data-category="charity">الصدقة</a></li>
+                <li><a href="#" data-category="hajj">الحج</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <!-- استبدال عنصر التحميل البسيط بأنيميشن جذاب -->
+            <div id="loading" class="hidden loading-container">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">جاري تحميل البيانات...</div>
+            </div>
+            <div id="error" class="hidden">حدث خطأ في تحميل البيانات</div>
+            <div id="sermons-container"></div>
+            <div id="pagination-container" class="pagination"></div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; <span id="year"></span> - موقع الخطب الدينية</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

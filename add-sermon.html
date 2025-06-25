@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة خطبة جديدة - موقع الخطب الدينية</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- إضافة مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>موقع الخطب الدينية</h1>
+            <div class="header-actions">
+                <a href="index.html" class="back-button"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+                <button id="logout-button" class="logout-button"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content container">
+        <main class="add-sermon-container">
+            <h2 id="form-title">إضافة خطبة جديدة</h2>
+            <div id="add-sermon-error" class="error-message hidden"></div>
+            <div id="add-sermon-success" class="success-message hidden">تم إضافة الخطبة بنجاح!</div>
+            
+            <form id="add-sermon-form">
+                <input type="hidden" id="sermon-id" value="">
+                <div class="form-group">
+                    <label for="sermon-title">عنوان الخطبة</label>
+                    <input type="text" id="sermon-title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sermon-category">التصنيف</label>
+                    <select id="sermon-category" name="category" required>
+                        <option value="">اختر التصنيف</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sermon-text">نص الخطبة</label>
+                    <textarea id="sermon-text" name="text" rows="10" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sermon-audio-url">رابط المقطع الصوتي (اختياري)</label>
+                    <input type="url" id="sermon-audio-url" name="audio-url" placeholder="أدخل رابط المقطع الصوتي">
+                    <div class="audio-preview hidden">
+                        <audio id="audio-preview-player" controls></audio>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-button" id="save-sermon-btn">
+                        <i class="fas fa-save"></i> حفظ الخطبة
+                    </button>
+                    <button type="button" class="reset-button" id="cancel-edit-btn" style="display: none;">
+                        <i class="fas fa-times"></i> إلغاء التعديل
+                    </button>
+                    <button type="reset" class="reset-button">
+                        <i class="fas fa-undo"></i> إعادة تعيين
+                    </button>
+                </div>
+            </form>
+            
+            <hr class="divider">
+            
+            <h2>إدارة الخطب</h2>
+            <div id="sermons-management-error" class="error-message hidden"></div>
+            <div id="sermons-management-success" class="success-message hidden"></div>
+            
+            <div class="sermons-list-container">
+                <div id="sermons-loading" class="loading-message">جاري تحميل الخطب...</div>
+                <div id="sermons-list"></div>
+            </div>
+            
+            <hr class="divider">
+            
+            <h2>إضافة قسم جديد</h2>
+            <div id="add-category-error" class="error-message hidden"></div>
+            <div id="add-category-success" class="success-message hidden">تم إضافة القسم بنجاح!</div>
+            
+            <form id="add-category-form">
+                <div class="form-group">
+                    <label for="category-id">معرف القسم (بالإنجليزية)</label>
+                    <input type="text" id="category-id" name="category-id" required placeholder="مثال: ramadan">
+                </div>
+                
+                <div class="form-group">
+                    <label for="category-name">اسم القسم (بالعربية)</label>
+                    <input type="text" id="category-name" name="category-name" required placeholder="مثال: رمضان">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-plus"></i> إضافة القسم
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- نافذة تأكيد الحذف -->
+    <div id="delete-confirmation" class="modal hidden">
+        <div class="modal-content">
+            <h3>تأكيد الحذف</h3>
+            <p>هل أنت متأكد من حذف هذه الخطبة؟</p>
+            <div class="modal-actions">
+                <button id="confirm-delete" class="delete-button">نعم، حذف</button>
+                <button id="cancel-delete" class="cancel-button">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; <span id="year"></span> - موقع الخطب الدينية</p>
+        </div>
+    </footer>
+
+    <script src="add-sermon.js"></script>
+</body>
+</html>
